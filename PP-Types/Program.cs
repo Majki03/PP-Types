@@ -14,9 +14,27 @@ string[] names = {
 // After last element should be ".".
 void PrintGroups(string[] t, int perLine)
 {
+    for (int i = 0; i < t.Length; i++)
+    {
+        // Print the element
+        Console.Write(t[i]);
 
-    // Write required code.
-
+        // Determine if a comma or period should follow
+        if (i == t.Length - 1) // Last element
+        {
+            Console.Write(".");
+        }
+        else if ((i + 1) % perLine == 0) // End of a line
+        {
+            Console.WriteLine(",");
+        }
+        else // Continue on the same line
+        {
+            Console.Write(", ");
+        }
+    }
+    
+    Console.WriteLine(); // Newline after the entire output
 }
 
 
@@ -27,9 +45,26 @@ void PrintGroups(string[] t, int perLine)
 
 void PrintColumns(string[] t, int perLine, int width)
 {
+    for (int i = 0; i < t.Length; i++)
+    {
+        // Trim the element if it's longer than the specified width
+        string element = t[i].Length > width ? t[i].Substring(0, width) : t[i];
 
-    // Write required code.
+        // Pad the element to the specified width and print it
+        Console.Write(element.PadRight(width));
 
+        // Determine if "| " or a newline should follow
+        if ((i + 1) % perLine == 0) // End of a row
+        {
+            Console.WriteLine();
+        }
+        else // Continue on the same line, add "| " separator
+        {
+            Console.Write(" | ");
+        }
+    }
+
+    Console.WriteLine(); // Newline after the entire output
 }
 
 
